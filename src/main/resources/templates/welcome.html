@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Page</title>
+</head>
+<body>
+
+<h1 style="color: Green"> Welcome To Instant Messaging Chat </h1>
+<h2> Whats your Username or Click button to Create a new Username </h2>
+
+<div >
+
+    <form action="" method="post">
+        <div>
+            <label>What do you want your username to be?
+            </label> <input type="text" th:field="${user.username}"/>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Create New Username" />
+        </div>
+    </form>
+
+    <div th:if="${#lists.size(users) != null}" th:each="user : ${users}">
+        Id Number:  <a th:href="@{/users/} + ${user.userid}"><span style="color: red" th:text="${user.userid}"> </span></a> <br />
+        Username: <span style="color: blue" th:text="${user.username}"> </span> <br />
+    </div >
+
+<!--    <div th:unless="${#lists.size(users) == null}">-->
+<!--        -->
+<!--    </div>-->
+
+</div>
+
+</body>
+</html>
