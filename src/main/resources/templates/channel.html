@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Select your Channel</title>
 </head>
 <body>
-<h1>Pick your Channel</h1>
+<h1 style="color: green">Pick your Channel</h1>
+<h3 style="color: Pink">Register For New Account</h3>
+
+<div>
 
 <div th:each="channel : ${channels}">
-    Channel Id Number:  <a th:href="@{/welcome/channel/} + ${user.userid}"><span style="color: red" th:text="${user.userid}"> </span></a>
+    Channel Id Number:  <a th:href="@{/welcome/} + ${channel.channelId/} + {user.userid}"><span style="color: red" th:text="${channel.channelId}"> </span></a>
     <br />
-    Username: <span style="color: blue" th:text="${user.username}"> </span> <br />
+    Channel Name: <span style="color: blue" th:text="${channel.username}"> </span> <br />
     <hr>
 </div >
 
+</div>
 </body>
 </html>
