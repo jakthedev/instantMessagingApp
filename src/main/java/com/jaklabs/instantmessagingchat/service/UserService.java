@@ -5,6 +5,8 @@ import com.jaklabs.instantmessagingchat.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 @Service
 public class UserService {
 
@@ -18,4 +20,10 @@ public class UserService {
     public User getUser(Long userid){
         return userrepo.findByUserid(userid);
     }
+
+    public Set<User> findAllUsers() {
+        return userrepo.findAllUsers();
+    };
+
+
 }

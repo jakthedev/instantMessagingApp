@@ -7,29 +7,33 @@
 <body>
 
 <h1 style="color: Green"> Welcome To Instant Messaging Chat </h1>
-<h2> Whats your Username or Click button to Create a new Username </h2>
+<h3 style="color: Pink">Register For New Account</h3>
 
 <div >
 
-    <form action="" method="post">
-        <div>
-            <label>What do you want your username to be?
-            </label> <input type="text" th:field="${user.username}"/>
-        </div>
-        <br>
-        <div>
-            <input type="submit" value="Create New Username" />
-        </div>
-    </form>
 
-    <div th:if="${#lists.size(users) != null}" th:each="user : ${users}">
-        Id Number:  <a th:href="@{/users/} + ${user.userid}"><span style="color: red" th:text="${user.userid}"> </span></a> <br />
+
+    <h1> Users </h1>
+<!--    <div th:if="${#lists.size(users) == 1}" >-->
+<!--        <form action="" method="post">-->
+<!--            <div>-->
+<!--                Userid: <input type="text" th:field="${users.userid}"/>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                Username: <input type="text" th:field="${users.username}"/>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>
+
+th:unless="${#lists.size(users) == 1 || users.isEmpty()}"
+-->
+
+    <div th:each="user : ${users}">
+        Id Number:  <a th:href="@{/welcome/channel/} + ${user.userid}"><span style="color: red" th:text="${user.userid}"> </span></a>
+        <br />
         Username: <span style="color: blue" th:text="${user.username}"> </span> <br />
+        <hr>
     </div >
-
-<!--    <div th:unless="${#lists.size(users) == null}">-->
-<!--        -->
-<!--    </div>-->
 
 </div>
 
