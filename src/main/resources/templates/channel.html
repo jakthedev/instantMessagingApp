@@ -5,15 +5,15 @@
     <title>Select your Channel</title>
 </head>
 <body>
-<h1 style="color: green">Pick your Channel</h1>
+<h1 style="color: blue">Pick your Channel</h1>
 <h3 style="color: Pink">Register For New Account</h3>
 
 <div>
 
 <div th:each="channel : ${channels}">
-    Channel Id Number:  <a th:href="@{/welcome/} + ${channel.channelId/} + {user.userid}"><span style="color: red" th:text="${channel.channelId}"> </span></a>
+    Channel Id Number:  <a th:href="@{/welcome/_${channel.channelId/}_${user.userid}_/messagingChat/}"><span style="color: red" th:text="${channel.channelId}"> </span></a>
     <br />
-    Channel Name: <span style="color: blue" th:text="${channel.username}"> </span> <br />
+    Channel Name: <span style="color: blue" th:text="${channel.name}"> </span> <br />
     <hr>
 </div >
 

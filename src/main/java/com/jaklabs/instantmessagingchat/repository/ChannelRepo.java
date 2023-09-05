@@ -13,6 +13,7 @@ public interface ChannelRepo extends JpaRepository<Channel, Long> {
 
     Channel findByChannelId(Long channelId);
 
+
     @Query("select c from Channel c")
     Set<Channel> findAllChannels();
 }

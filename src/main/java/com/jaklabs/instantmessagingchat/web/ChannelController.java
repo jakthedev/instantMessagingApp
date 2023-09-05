@@ -48,5 +48,29 @@ public class ChannelController {
         return "redirect:/welcome/channel/{userid}";
     }
 
+    @GetMapping("/welcome/channelRegistration")
+    public String createChannel(ModelMap model){
+
+        Channel channel = new Channel();
+        model.put("channel", channel);
+        model.put("channelId", channel.getChannelId());
+
+        Set<Channel> channels = channelService.findAllChannels();
+
+        model.put("channels", channels);
+        if (channels.size() == 1) {
+            model.put("channels", channels.iterator().next());
+        }
+
+        return "channelRegistration";
+    }
+
+    @PostMapping("/welcome/channelRegistration")
+    public String createChannel(ModelMap model, Channel channel){
+        channelService.saveChannel(channel);
+        //model.addAttribute("userid", userid);
+        return "redirect:/welcome/channel/{userid}";
+    }
+
 
 }
