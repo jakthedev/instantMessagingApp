@@ -19,10 +19,10 @@ public class MessagingController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/welcome/${channelId}/${userid}/messagingChat")
+    @GetMapping("/welcome/${channelId}/messagingChat/${userid}")
     public String startMessaging(ModelMap model, @PathVariable Long channelId, @PathVariable Long userid) {
-        Channel thisChannel = channelService.findChannel(channelId);
-        User thisUser = userService.getUser(userid);
+//        Channel thisChannel = channelService.findChannel(channelId);
+//        User thisUser = userService.getUser(userid);
 
 
         return "messagingChat";
