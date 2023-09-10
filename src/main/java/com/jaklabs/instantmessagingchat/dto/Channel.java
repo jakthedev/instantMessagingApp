@@ -53,11 +53,11 @@ public class Channel {
     @JoinTable(name = "channelUser_messages",
             joinColumns = @JoinColumn(name= "user_id"),
             inverseJoinColumns = @JoinColumn(name= "message_id"))
-    public List<Message> getMessages() {
+    public List<Message> getUserMessageInfo() {
         return messages;
     }
 
-    public void setMessages(List<Message> messages) {
+    public void setUserMessageInfo(List<Message> messages) {
         this.messages = messages;
     }
 }

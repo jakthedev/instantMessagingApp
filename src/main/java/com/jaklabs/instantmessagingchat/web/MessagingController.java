@@ -24,7 +24,7 @@ public class MessagingController {
     public String startMessaging(ModelMap model, @PathVariable Long userid) {
 
         User user = userService.getUser(userid);
-        Channel channel = channelService.findChannel(channelId);
+        //Channel channel = channelService.findChannel(channelId);
         //Channel channelO = new Channel();
 
         Long num = channel.getChannelId();

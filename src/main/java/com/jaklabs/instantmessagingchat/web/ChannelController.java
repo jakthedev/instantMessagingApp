@@ -38,7 +38,10 @@ public class ChannelController {
     public String pickChannel(ModelMap model, @PathVariable Long userid){
 
         User thisUser = userService.getUser(userid);
-        //thisUser.setChannelUserIsIn();
+        // I need to register the channel to the User,
+        // doing this in the javascript file, and not here.
+        // thisUser.setChannelUserIsIn();
+
         model.put("user", thisUser);
 
         return "redirect:/welcome/channel/{userid}";
