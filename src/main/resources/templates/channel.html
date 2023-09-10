@@ -10,10 +10,13 @@
 
 <div>
 
+<!--    th:href="@{/welcome/messagingChat/} + ${user.userid}"-->
+
 <div th:each="channel : ${channels}">
-    Channel Id Number:  <a th:href="@{/welcome/_${channel.channelId/}_${user.userid}_/messagingChat/}"><span style="color: red" th:text="${channel.channelId}"> </span></a>
+    Channel Id Number:  <span style="color: red" th:text="${channel.channelId}"> </span>
     <br />
-    Channel Name: <span style="color: blue" th:text="${channel.name}"> </span> <br />
+    Channel Name: <a th:href="@{/welcome/messagingChat/} + ${channel.channelId}"><span style="color: blue" th:text="${channel.name}"> </span></a>
+    <br />
     <hr>
 </div >
 

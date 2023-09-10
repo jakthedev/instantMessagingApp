@@ -23,10 +23,7 @@ public class ChannelController {
     private ChannelService channelService;
 
     @GetMapping("/welcome/channel/{userid}")
-    public String PickChannel(ModelMap model){
-        System.out.println("me");
-        //User thisUser = userService.getUser(userid);
-        //model.put("user", thisUser);
+    public String pickChannel(ModelMap model){
 
         Set<Channel> channels = channelService.findAllChannels();
 
@@ -34,15 +31,14 @@ public class ChannelController {
         if (channels.size() == 1) {
             model.put("channels", channels.iterator().next());
         }
-
-
         return "channel";
     }
 
     @PostMapping("/welcome/channel/{userid}")
-    public String createChannel(ModelMap model, @PathVariable Long userid){
+    public String pickChannel(ModelMap model, @PathVariable Long userid){
 
         User thisUser = userService.getUser(userid);
+        //thisUser.setChannelUserIsIn();
         model.put("user", thisUser);
 
         return "redirect:/welcome/channel/{userid}";
@@ -71,6 +67,5 @@ public class ChannelController {
         //model.addAttribute("userid", userid);
         return "redirect:/welcome/channel/{userid}";
     }
-
 
 }
