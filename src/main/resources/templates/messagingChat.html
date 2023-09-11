@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<h1 th:inline="text"> [[${user.getUsername()}]] </h1> <h2>Is Chatting ...</h2>
+
+<div class="container">
+    <div class="chatbox">
+        <textarea>
+
+        </textarea>
+    </div>
+</div>
+<ul class="chatMessages" >
+    <li class="messages" th:each="message : ${channel.messages}"#senderMessages #recevierMessages>
+
+    <span th:text="${message.user.getUsername()}"></span> <p th:text="${message.text}"></p>
+    </li>
+    <label th:text="${user.getUsername()}">  </label> <input type="text" th:field="${user.username}"/>
+</ul>
 
 </body>
 </html>

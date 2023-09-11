@@ -7,9 +7,7 @@ import com.jaklabs.instantmessagingchat.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
@@ -38,13 +36,27 @@ public class ChannelController {
     public String pickChannel(ModelMap model, @PathVariable Long userid){
 
         User thisUser = userService.getUser(userid);
+        Channel channel = new Channel();
         // I need to register the channel to the User,
         // doing this in the javascript file, and not here.
         // thisUser.setChannelUserIsIn();
 
+        channel.setUsersInChat(thisUser);
+
         model.put("user", thisUser);
 
         return "redirect:/welcome/channel/{userid}";
+    }
+
+    @PostMapping("/welcome/channel/{userid}")
+    @ResponseBody
+    public Boolean postExists (@RequestBody Channel channel) {
+        channel = channelService.findChannel(channel.getChannelId());
+        if (channel.getUserMessageInfo() == null) {
+            System.out.println("no messages exist");
+            return channel.getUserMessageInfo() == null;
+        }
+        return (channel.getUserMessageInfo() != null);
     }
 
     @GetMapping("/welcome/channelRegistration")

@@ -1,0 +1,26 @@
+.chatbox{
+    display:none;
+    background: #efefef;
+    position:fixed;
+    right:30px;
+    bottom:50px;
+    width:350px;
+    max-width: 85vw;
+    max-height:100vh;
+    border-radius:5px;
+}
+
+.chat-box-body {
+    position: relative;
+    height:370px;
+    height:auto;
+    border:1px solid #ccc;
+    overflow: hidden;
+}
+
+.textArea {
+    resize: none;
+    overflow: visible;
+    max-height: 50vh;
+    overflow-wrap: break-word;
+}

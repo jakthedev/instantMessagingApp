@@ -36,16 +36,28 @@ public class Channel {
 //        return usersInChat;
 //    }
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "chatUsers_areIn",
-            joinColumns = @JoinColumn(name= "user_id"),
-            inverseJoinColumns = @JoinColumn(name= "channelUser_isIn"))
-    public List<User> getUsersInChat() {
+            joinColumns = {@JoinColumn(table = "users",
+                    name = "userid",
+                    referencedColumnName = "uId"),
+                    @JoinColumn(table = "Channel",
+                            name = "channelId",
+                            referencedColumnName = "cId")},
+            inverseJoinColumns = {@JoinColumn(table = "chatUsers_areIn",
+                    name= "channelId")})
+    public Long getChatUserAreIn(List<User> user) {
+        for (User u : user) {
+            if (u ==)
+        }
+        if (userid != null) {
+            return us
+        }
 
-        return usersInChat;
+        return null;
     }
 
-    public void setUsersInChat(List<User> usersInChat) {
+    public void setUsersInChat(User usersInChat) {
         this.usersInChat = usersInChat;
     }
 
