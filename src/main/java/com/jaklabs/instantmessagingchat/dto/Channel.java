@@ -10,6 +10,7 @@ public class Channel {
 
     private Long channelId;
     private String name;
+    private Long uId;
     private List<User> usersInChat = new ArrayList<>();
 
     private List<Message> messages = new ArrayList<>();
@@ -32,32 +33,34 @@ public class Channel {
         this.name = name;
     }
 
-//    public List<User> getUsersInChat() {
-//        return usersInChat;
+    public Long getuId() {
+        return uId;
+    }
+
+    public void setuId(Long uId) {
+        this.uId = uId;
+    }
+
+//    public List<Message> getMessages() {
+//        return messages;
 //    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(name = "chatUsers_areIn",
             joinColumns = {@JoinColumn(table = "users",
                     name = "userid",
-                    referencedColumnName = "uId"),
-                    @JoinColumn(table = "Channel",
-                            name = "channelId",
-                            referencedColumnName = "cId")},
+                    referencedColumnName = "uId")},
             inverseJoinColumns = {@JoinColumn(table = "chatUsers_areIn",
                     name= "channelId")})
-    public Long getChatUserAreIn(List<User> user) {
-        for (User u : user) {
-            if (u ==)
-        }
-        if (userid != null) {
-            return us
-        }
-
-        return null;
+    public List<User> getUsersInChat() {
+        return usersInChat;
     }
 
-    public void setUsersInChat(User usersInChat) {
+    public void setUsersInChat(List<User> usersInChat) {
         this.usersInChat = usersInChat;
     }
 

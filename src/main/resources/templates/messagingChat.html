@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,7 +7,8 @@
 </head>
 <body>
 
-<h1 th:inline="text"> [[${user.getUsername()}]] </h1> <h2>Is Chatting ...</h2>
+<h1 th:text="${user.getUsername()}"> </h1>
+<h2>Is Chatting ...</h2>
 
 <div class="container">
     <div class="chatbox">

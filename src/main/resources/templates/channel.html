@@ -15,7 +15,7 @@
 <div th:each="channel : ${channels}">
     Channel Id Number:  <span style="color: red" th:text="${channel.channelId}"> </span>
     <br />
-    Channel Name: <a th:href="${'/welcome/messagingChat/' + {user.userid} + '/' + {channel.channelId}}"><span style="color: blue" th:text="${channel.name}"> </span></a>
+    Channel Name: <a th:href="@{/welcome/messagingChat/} + ${channel.channelId}"><span style="color: blue" th:text="${channel.name}"> </span></a>
     <br />
     <hr>
 </div >

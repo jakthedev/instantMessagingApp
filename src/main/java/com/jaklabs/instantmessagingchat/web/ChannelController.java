@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -40,24 +42,25 @@ public class ChannelController {
         // I need to register the channel to the User,
         // doing this in the javascript file, and not here.
         // thisUser.setChannelUserIsIn();
-
-        channel.setUsersInChat(thisUser);
+        List<User> allUser = new ArrayList<>();
+        allUser.add(thisUser);
+        channel.setUsersInChat(allUser);
 
         model.put("user", thisUser);
 
         return "redirect:/welcome/channel/{userid}";
     }
 
-    @PostMapping("/welcome/channel/{userid}")
-    @ResponseBody
-    public Boolean postExists (@RequestBody Channel channel) {
-        channel = channelService.findChannel(channel.getChannelId());
-        if (channel.getUserMessageInfo() == null) {
-            System.out.println("no messages exist");
-            return channel.getUserMessageInfo() == null;
-        }
-        return (channel.getUserMessageInfo() != null);
-    }
+//    @PostMapping("/welcome/channel/{userid}")
+//    @ResponseBody
+//    public Boolean postExists (@RequestBody Channel channel) {
+//        channel = channelService.findChannel(channel.getChannelId());
+//        if (channel.getUserMessageInfo() == null) {
+//            System.out.println("no messages exist");
+//            return channel.getUserMessageInfo() == null;
+//        }
+//        return (channel.getUserMessageInfo() != null);
+//    }
 
     @GetMapping("/welcome/channelRegistration")
     public String createChannel(ModelMap model){
